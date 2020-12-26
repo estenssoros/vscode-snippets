@@ -1,0 +1,82 @@
+{
+    "CobraCommand":{
+		"scope": "go",
+		"prefix": "cobracmd",
+		"body": [
+			"var $1Cmd = &cobra.Command{",
+			"\tUse: \"$2\",",
+			"\tShort: \"\",",
+			"\tPreRunE: func(cmd *cobra.Command, args []string) error { return nil },",
+			"\tRunE: func(cmd *cobra.Command, args []string) error { return nil },",
+			"}",
+		]
+	},
+	"ErrNil":{
+		"scope":"go",
+		"prefix": "errnil",
+		"body": [
+			"if err != nil {",
+			"\treturn errors.Wrap(err,\"$1\")",
+			"}"
+		]
+	},
+	"ErrNil,":{
+		"scope":"go",
+		"prefix": "errnil,",
+		"body": [
+			"if err != nil {",
+			"\treturn nil, errors.Wrap(err,\"$1\")",
+			"}"
+		]
+	},
+	"ErrWrap":{
+		"scope":"go",
+		"prefix": "errwrap",
+		"body": [
+			"return errors.Wrap(err,\"$1\")",
+		]
+	},
+	"ErrWrap,":{
+		"scope":"go",
+		"prefix": "errwrap,",
+		"body": [
+			"return nil, errors.Wrap(err,\"$1\")",
+		]
+	},
+	"Stringer":{
+		"scope":"go",
+		"prefix": "stringer",
+		"body": [
+			"func ($1 $2) String() string {",
+			"\tju,_:=json.MarshalIndent($1,\"\",\" \")",
+			"\treturn string(ju)",
+			"}",
+		]
+	},
+	"FuncMain":{
+		"scope": "go",
+		"prefix": "funcmain",
+		"body":[
+			"package main\n",
+			"import \"log\"\n",
+			"func run() error {",
+			"\treturn nil",
+			"}\n",
+			"func main() {",
+			"\tif err := run(); err != nil {",
+			"\t\tlog.Fatal(err)",
+			"\t}",
+			"}",
+		]
+	},
+	"TableName":{
+		"scope": "go",
+		"prefix": "tablename",
+		"body":[
+			"// TableName implements tablenameable",
+			"func ($1 $2) TableName() string {",
+			"return `$3`",
+			"}"
+		]
+	}
+}
